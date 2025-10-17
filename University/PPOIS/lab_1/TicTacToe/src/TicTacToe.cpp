@@ -4,12 +4,12 @@
  * @details Содержит реализации всех классов для игры в крестики-нолики
  */
 
-#include "TicTacToe.h"
+#include "../include/TicTacToe.h"
 #include <exception>
 #include <iostream>
 #include <memory>
 #include <sstream>
-#include <algorithm>
+//#include <algorithm>
 #include <string>
 
 const int WINCONDITION = 3;
@@ -123,7 +123,7 @@ int ConsoleInputHandler::getBoardSize() {
     return size;
 }
 
-bool ConsoleInputHandler::getPlayerMove(Player curentPlayer, int row, int col) {
+bool ConsoleInputHandler::getPlayerMove(Player curentPlayer, int& row, int& col) {
     std::string input;
     std::cout << "Игрок " << board_->getPlayerSymbol(curentPlayer)
               << ", введи свой ход (row, col): ";
@@ -192,7 +192,7 @@ void ConsoleOutputHandler::displayBoard() const {
 void ConsoleOutputHandler::displayWelcome() const {
     std::cout << "=== Добро пожаловать в крестики-нолики! ===\n";
     std::cout << "Игроки буду ходить и размещать на поле свои символыю\n";
-    std::cout << "Первый кто получит " << WINCONDITION << "победит!\n\n";
+    std::cout << "Первый кто получит " << WINCONDITION << " победит!\n\n";
 }
 
 void ConsoleOutputHandler::displayWinner(Player player) const {
@@ -232,4 +232,56 @@ void Game::run() {
             break;
         }
     }
+}
+
+void Game::switchPlayer() {
+    currentPlayer_ = (currentPlayer_ == Player::X) ? Player::O : Player::X;
+}
+
+void Game::initializeGame() {
+    int size = inputHandler_->getBoardSize();
+    board_->initialize(size);
+    gameOver_ = false;
+    currentPlayer_ = Player::X;
+}
+
+bool Game::playRound() {
+    outputHandler_->displayBoard();
+    outputHandler_->displayCurrentPlayer(currentPlayer_);
+    
+    int row, col;
+    while (!inputHandler_->getPlayerMove(currentPlayer_, row, col)) {
+        // Продолжаем запрашивать ввод, пока не получим корректный
+        
+    }
+    
+    if (!board_->makeMove(row, col, currentPlayer_)) {
+        std::cout << row << "-" << col;
+        outputHandler_->displayError("Ошибка при совершении хода");
+        return false;
+    }
+    
+    if (checkGameOver(row, col)) {
+        outputHandler_->displayBoard();
+        return false;
+    }
+    
+    switchPlayer();
+    return true;
+}
+
+bool Game::checkGameOver(int lastRow, int lastCol) {
+    if (gameLogic_->checkWin(lastRow, lastCol, currentPlayer_)) {
+        outputHandler_->displayWinner(currentPlayer_);
+        gameOver_ = true;
+        return true;
+    }
+
+    if (board_->isFull()) {
+        outputHandler_->displayDraw();
+        gameOver_ = true;
+        return true;
+    }
+
+    return false;
 }

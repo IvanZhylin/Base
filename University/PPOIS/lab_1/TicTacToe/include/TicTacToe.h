@@ -125,7 +125,7 @@ public:
      * @param col Ссылка для сохранения колонки
      * @return true, если ввод корректен
      */
-    virtual bool getPlayerMove(Player currentPlayer, int row, int col) = 0;
+    virtual bool getPlayerMove(Player currentPlayer, int& row, int& col) = 0;
 };
 
 /**
@@ -217,7 +217,7 @@ private:
 public:
     explicit ConsoleInputHandler(std::shared_ptr<Board> board);
     int getBoardSize() override;
-    bool getPlayerMove(Player currentPlayer, int row, int col) override;
+    bool getPlayerMove(Player currentPlayer, int& row, int& col) override;
 
 private: 
     bool parseMove(const std::string& input, int& row, int& col) const;
