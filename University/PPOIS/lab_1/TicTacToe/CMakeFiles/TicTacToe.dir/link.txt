@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/TicTacToe.dir/link.d CMakeFiles/TicTacToe.dir/src/TicTacToe.cpp.o CMakeFiles/TicTacToe.dir/src/main.cpp.o -o bin/TicTacToe

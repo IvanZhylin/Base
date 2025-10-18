@@ -1,4 +1,0 @@
-/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe/CMakeFiles/TicTacToe.dir
-/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe/CMakeFiles/doc.dir
-/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe/CMakeFiles/edit_cache.dir
-/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe/CMakeFiles/rebuild_cache.dir
