@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe",
-      "program": "/home/jetstreamvan/git/Base/University/PPOIS/lab_1/TicTacToe/build/Debug/outDebug",
+      "cwd": "/home/jetstreamvan/git/Base/University/OS/lab_3",
+      "program": "/home/jetstreamvan/git/Base/University/OS/lab_3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
